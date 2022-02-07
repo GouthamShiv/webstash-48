@@ -1,10 +1,9 @@
 // https://source.unsplash.com/random/300x300?<<tag>>
 const container = document.querySelector('.container');
 const unsplashURL = 'https://source.unsplash.com/random/300x300?';
-let prevTag = '';
 const rows = 10;
 
-const tags = [
+let tags = [
     'water',
     'nature',
     'tech',
@@ -51,9 +50,6 @@ for (let i = 0; i < rows * 3; i++) {
 
 function randomTag() {
     currentTag = tags[Math.floor(Math.random() * tags.length)];
-    if (prevTag && prevTag === currentTag) {
-        currentTag = tags[Math.floor(Math.random() * tags.length)];
-    }
-    prevTag = currentTag;
+    tags.splice(tags.indexOf(currentTag), 1);
     return currentTag;
 }
